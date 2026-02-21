@@ -1,0 +1,17 @@
+{
+    "deploy": [
+        "../deploy.md"
+    ],
+    "docs": "",
+    "features": [
+        "Dual-core",
+        "External Flash",
+        "USB",
+        "GC9A01 LCD",
+        "CST816S Touch"
+    ],
+    "mcu": "rp2040",
+    "product": "RP2040-Touch-LCD-1.28",
+    "url": "https://www.waveshare.com/wiki/RP2040-Touch-LCD-1.28",
+    "vendor": "Waveshare"
+}
