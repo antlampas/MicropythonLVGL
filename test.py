@@ -47,8 +47,8 @@ def _load_board_module():
 
     names = ", ".join(name for name, _ in BOARD_CANDIDATES)
     raise RuntimeError(
-        f"Nessun modulo board trovato. Attesi: {names}. "
-        "Ricompila/flasha il firmware corretto."
+        f"No board module found. Expected: {names}. "
+        "Rebuild/flash the correct firmware."
     )
 
 
@@ -62,7 +62,7 @@ def _init_board(board):
         display = board.init_display()
         try:
             indev = board.init_touch()
-            print("[OK] Touch inizializzato.")
+            print("[OK] Touch initialized.")
         except Exception as e:
             print(f"[WARN] Touch init failed: {e}")
             indev = None
@@ -75,7 +75,7 @@ def _init_board(board):
             display, indev = board.init()
         return display, indev
 
-    raise RuntimeError("Il modulo board non espone init_display/init.")
+    raise RuntimeError("The board module does not expose init_display/init.")
 
 
 def _font(size):
@@ -107,7 +107,7 @@ def create_ui(indev):
     """
     def onButtonPressed(e):
         if label.get_text() == "AAAH":
-            label.set_text("PREMIMI!")
+            label.set_text("PRESS ME!")
         else:
             label.set_text("AAAH")
     forward = True
@@ -148,7 +148,7 @@ def create_ui(indev):
     button.add_flag(lv.obj.FLAG.CLICKABLE)
     
     label = lv.label(button)
-    label.set_text("PREMIMI!")
+    label.set_text("PRESS ME!")
     
     button.add_event_cb(onButtonPressed, lv.EVENT.PRESSED, None)
 
@@ -167,7 +167,7 @@ def main():
     create_ui(indev)
     if hasattr(lv, "refr_now"):
         lv.refr_now(display._disp_drv)
-    print("[OK] UI pronta.")
+    print("[OK] UI ready.")
 
     while True:
         lv.tick_inc(5)
